@@ -29,6 +29,9 @@ public class RabbitmqConfigFanout {
     final static String exchange = "fanoutExchange";
 
 
+    /**
+     *  params ： 1、队列名  2、是否持久化 3、是否独占  4、是否自动删除队列
+     */
     @Bean
     public Queue queueFanoutA() {
         return new Queue(RabbitmqConfigFanout.queueA,false,false,true);
