@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: hello-rabbitmq
+  ## rabbit mq ????
+#  rabbitmq:
+#    addresses: 10.219.22.235
+#    port: 15672
+#    username: ysqdev
+#    password: 123456
+#    virtual-host: /
+
+  ## rabbit mq ????
+  rabbitmq:
+    addresses: 47.116.68.208
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: demoHost
