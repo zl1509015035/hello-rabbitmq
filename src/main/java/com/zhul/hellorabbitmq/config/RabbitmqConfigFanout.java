@@ -43,7 +43,6 @@ public class RabbitmqConfigFanout {
     }
 
     /**
-     *
      * @method 声明一个fanout类型的交换机
      * @return
      */
@@ -53,7 +52,6 @@ public class RabbitmqConfigFanout {
     }
 
     /**
-     *
      * @method 绑定Queue队列到交换机,并且指定routingKey
      * @param queueFanoutA 对应注入queueFanoutA()方法
      * @param fanoutExchange 对应fanoutExchange()

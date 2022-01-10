@@ -1,5 +1,6 @@
 package com.zhul.hellorabbitmq.controller;
 
+import com.zhul.hellorabbitmq.product.ProducerDirect;
 import com.zhul.hellorabbitmq.product.ProducerFanout;
 import com.zhul.hellorabbitmq.product.ProducerSimple;
 import com.zhul.hellorabbitmq.product.ProducerWork;
@@ -25,6 +26,9 @@ public class MessageController {
     @Autowired
     private ProducerFanout producerFanout;
 
+    @Autowired
+    private ProducerDirect producerDirect;
+
     @PostMapping("/send")
     public void send(){
         producerSimple.send();
@@ -38,5 +42,12 @@ public class MessageController {
     @PostMapping("/sendFanout")
     public void sendFanout() throws Exception {
         producerFanout.send();
+    }
+
+    @PostMapping("/sendDirect")
+    public void sendDirect() throws Exception {
+        producerDirect.sendA();
+        Thread.sleep(5000);
+        producerDirect.sendB();
     }
 }
