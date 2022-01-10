@@ -14,8 +14,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitmqConfigWork {
 
+    /**
+     *
+     */
     @Bean
     public Queue queueWork() {
-        return new Queue("queue_work",false);
+        return new Queue("queue_work",false,false,true);
     }
 }

@@ -16,6 +16,6 @@ public class RabbitmqConfigSimple {
 
     @Bean
     public Queue queueSimple() {
-        return new Queue("queue_simple",false);
+        return new Queue("queue_simple",false,false,true);
     }
 }

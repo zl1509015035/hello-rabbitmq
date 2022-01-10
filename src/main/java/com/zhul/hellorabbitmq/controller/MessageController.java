@@ -1,5 +1,6 @@
 package com.zhul.hellorabbitmq.controller;
 
+import com.zhul.hellorabbitmq.product.ProducerFanout;
 import com.zhul.hellorabbitmq.product.ProducerSimple;
 import com.zhul.hellorabbitmq.product.ProducerWork;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class MessageController {
     @Autowired
     private ProducerWork producerWork;
 
+    @Autowired
+    private ProducerFanout producerFanout;
+
     @PostMapping("/send")
     public void send(){
         producerSimple.send();
@@ -29,5 +33,10 @@ public class MessageController {
     @PostMapping("/sendWork")
     public void sendWork() throws Exception {
         producerWork.send();
+    }
+
+    @PostMapping("/sendFanout")
+    public void sendFanout() throws Exception {
+        producerFanout.send();
     }
 }
