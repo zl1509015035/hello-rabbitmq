@@ -1,9 +1,6 @@
 package com.zhul.hellorabbitmq.controller;
 
-import com.zhul.hellorabbitmq.product.ProducerDirect;
-import com.zhul.hellorabbitmq.product.ProducerFanout;
-import com.zhul.hellorabbitmq.product.ProducerSimple;
-import com.zhul.hellorabbitmq.product.ProducerWork;
+import com.zhul.hellorabbitmq.product.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +26,9 @@ public class MessageController {
     @Autowired
     private ProducerDirect producerDirect;
 
+    @Autowired
+    private ProducerTopic producerTopic;
+
     @PostMapping("/send")
     public void send(){
         producerSimple.send();
@@ -47,7 +47,13 @@ public class MessageController {
     @PostMapping("/sendDirect")
     public void sendDirect() throws Exception {
         producerDirect.sendA();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         producerDirect.sendB();
+    }
+
+    @PostMapping("/sendTopic")
+    public void sendTopic() throws Exception {
+        producerTopic.sendA();
+        producerTopic.sendB();
     }
 }
