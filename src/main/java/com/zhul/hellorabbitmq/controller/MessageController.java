@@ -29,6 +29,9 @@ public class MessageController {
     @Autowired
     private ProducerTopic producerTopic;
 
+    @Autowired
+    private ProducerDead producerDead;
+
     @PostMapping("/send")
     public void send(){
         producerSimple.send();
@@ -55,5 +58,11 @@ public class MessageController {
     public void sendTopic() throws Exception {
         producerTopic.sendA();
         producerTopic.sendB();
+    }
+
+    @RequestMapping("/sendEmail")
+    public String sendEmail() throws Exception {
+        producerDead.send();
+        return "success";
     }
 }
