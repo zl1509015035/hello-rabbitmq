@@ -1,6 +1,11 @@
 package com.zhul.hellorabbitmq.controller;
 
-import com.zhul.hellorabbitmq.product.*;
+import com.zhul.hellorabbitmq.dead.producer.ProducerDead;
+import com.zhul.hellorabbitmq.direct.producer.ProducerDirect;
+import com.zhul.hellorabbitmq.fanout.producer.ProducerFanout;
+import com.zhul.hellorabbitmq.simple.producer.ProducerSimple;
+import com.zhul.hellorabbitmq.topic.producer.ProducerTopic;
+import com.zhul.hellorabbitmq.work.producer.ProducerWork;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
