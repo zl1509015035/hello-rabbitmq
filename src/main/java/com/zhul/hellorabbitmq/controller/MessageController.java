@@ -1,15 +1,15 @@
 package com.zhul.hellorabbitmq.controller;
 
 import com.zhul.hellorabbitmq.dead.producer.ProducerDead;
+import com.zhul.hellorabbitmq.delay.producer.DelayProducer;
 import com.zhul.hellorabbitmq.direct.producer.ProducerDirect;
 import com.zhul.hellorabbitmq.fanout.producer.ProducerFanout;
 import com.zhul.hellorabbitmq.simple.producer.ProducerSimple;
 import com.zhul.hellorabbitmq.topic.producer.ProducerTopic;
 import com.zhul.hellorabbitmq.work.producer.ProducerWork;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhul
@@ -36,6 +36,9 @@ public class MessageController {
 
     @Autowired
     private ProducerDead producerDead;
+
+    @Autowired
+    private DelayProducer producerDelay;
 
     @PostMapping("/send")
     public void send(){
@@ -68,6 +71,20 @@ public class MessageController {
     @RequestMapping("/sendEmail")
     public String sendEmail() throws Exception {
         producerDead.send();
+        return "success";
+    }
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @RequestMapping("/sendDelayMsg")
+    public String sendDelayMsg(@RequestParam(value = "time") Integer time) throws Exception {
+/*        rabbitTemplate.execute(channel -> {
+            channel.queueDeclare();
+
+            channel.exchangeDeclare()
+        })*/
+        producerDelay.send(time);
         return "success";
     }
 }

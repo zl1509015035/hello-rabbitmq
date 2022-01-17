@@ -60,7 +60,7 @@ public class RabbitConfigDead {
     //声明一个direct类型的交换机
     @Bean
     DirectExchange emailExchange() {
-        return new DirectExchange(RabbitConfigDead.exchangeName);
+        return new DirectExchange(RabbitConfigDead.exchangeName,false,true);
     }
 
     //绑定邮件Queue队列到交换机,并且指定routingKey
@@ -72,14 +72,14 @@ public class RabbitConfigDead {
     //创建配置死信邮件队列
     @Bean
     public Queue deadQueue() {
-        Queue queue = new Queue(deal_queue, true);
+        Queue queue = new Queue(deal_queue, false,false,true);
         return queue;
     }
 
     //创建死信交换机
     @Bean
     public DirectExchange deadExchange() {
-        return new DirectExchange(deal_exchangeName);
+        return new DirectExchange(deal_exchangeName,false,true);
     }
 
     //死信队列与死信交换机绑定

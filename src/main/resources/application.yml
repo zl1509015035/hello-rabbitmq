@@ -3,11 +3,11 @@ spring:
     name: hello-rabbitmq
   ## rabbit mq ????
 #  rabbitmq:
-#    addresses: 10.219.22.235
+#    addresses: 172.31.2.20
 #    port: 15672
-#    username: ysqdev
-#    password: 123456
-#    virtual-host: /
+#    username: admin
+#    password: admin
+#    virtual-host: dev
 
   ## rabbit mq ????
   rabbitmq:
@@ -16,3 +16,6 @@ spring:
     username: admin
     password: 123456
     virtual-host: demoHost
+    listener:
+      simple:
+        acknowledge-mode: manual

@@ -28,12 +28,12 @@ public class RabbitmqConfigTopic {
 
     @Bean
     public Queue queueTopicA() {
-        return new Queue(RabbitmqConfigTopic.queueA);
+        return new Queue(RabbitmqConfigTopic.queueA,false,false,true);
     }
 
     @Bean
     public Queue queueTopicB() {
-        return new Queue(RabbitmqConfigTopic.queueB);
+        return new Queue(RabbitmqConfigTopic.queueB,false,false,true);
     }
 
     /**
@@ -43,7 +43,7 @@ public class RabbitmqConfigTopic {
      */
     @Bean
     TopicExchange topicExchange() {
-        return new TopicExchange(RabbitmqConfigTopic.exchange);
+        return new TopicExchange(RabbitmqConfigTopic.exchange,false,true);
     }
 
     /**
